@@ -1,0 +1,31 @@
+.selectWrapper:first-child {
+    z-index: 999999;
+}
+
+.selectMenu{
+    z-index: 999999;
+    border-radius:0px!important;
+}
+.MuiSlider-root {
+    color: rgb(31, 31, 31)!important;
+    cursor: pointer;
+}
+.MuiSlider-thumb {    
+    margin-top: -9px!important;
+    border-radius: 20%!important;
+    border-bottom-left-radius: 0!important;
+    border-bottom-right-radius: 0!important;
+}
+.MuiSlider-thumb:hover {    
+    box-shadow: none!important;
+}
+.MuiSlider-thumb.Mui-focusVisible {    
+    box-shadow: none!important;
+}
+.MuiSlider-track {
+    height: 3px!important;
+    color: rgb(31, 31, 31)!important;
+}
+.MuiSlider-rail {
+    height: 3px!important;
+}

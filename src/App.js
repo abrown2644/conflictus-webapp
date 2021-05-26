@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-        <img className="logo" src={logo}></img>            
+        {/* <img className="logo" src={logo}></img>             */}
         <Map theme="light"/>
     </div>
   );

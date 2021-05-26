@@ -36,7 +36,8 @@ function LeafletMap({ theme, battleItems}) {
                 <Circle key={index} pathOptions={{ color: '#d7263d' }} center={[battle.location.latitude, battle.location.longitude]}>
                     <Popup>
                         <h4>{battle.title}</h4>
-                        <h5>{battle.date}</h5>                    
+                        <h5>{battle.date}</h5>
+                        <h5><a href={battle.url} target="_blank">See on Wikidata</a></h5>                    
                     </Popup>
                 </Circle>
             ))}            

@@ -1,3 +1,28 @@
+.map_ui {
+    width: 350px;
+    margin: 10px 10px 0 10px;
+    right: 0;
+}
+
+.war_selector {    
+    position: absolute;
+    border: none;
+    border-radius: 0px;
+    margin-top: 10px;
+}
+.war_card {
+    max-height: 550px;
+    position: absolute;
+    border-radius: 4px;
+    top: 62px; 
+    z-index: 9999;
+    background: cyan;
+    overflow: auto;
+}
+.war_card img {
+    max-width: 400px;
+}
+
 .selectWrapper:first-child {
     z-index: 999999;
 }
@@ -29,3 +54,24 @@
 .MuiSlider-rail {
     height: 3px!important;
 }
+
+
+// mobile  480px
+// tablet  728px
+// laptop  1024px
+// desktop 1200px
+
+
+@media only screen and (max-width: 768px) {
+    .map_ui {
+        width: 94%;
+        margin: 0 10px;
+    }
+    .war_selector {
+        margin-top: 10px;
+    }
+    .war_card {
+        // right:0;
+        // margin: 0;
+    }
+  }

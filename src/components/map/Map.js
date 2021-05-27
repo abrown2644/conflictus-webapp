@@ -86,42 +86,39 @@ function Map({ theme }) {
 
     return (        
         <div id="map">                 
-          <Grid container style={{ position: "absolute", zIndex:"99999", alignItems: "center", marginTop: "8px"}}>
-            {/* <Grid item xs={2} md={1}>
-              <h4 id="map-title">title here</h4>
-            </Grid> */}
-            <Grid item xs={12} md={12} style={{display: "flex", justifyContent: "flex-end"}}>
-              <Grid item xs={12} md={3} style={{marginLeft: "10px",marginRight: "10px", border: "none", borderRadius: "0px"}}>
-                {warsState.wars ? 
-                <Select onChange={(e) => fetchBattles(e)} 
-                  placeholder={"select a war"} 
-                  options={warsState.wars.map((war, index) =>( {value:war.id, label:war.name} ))} 
-                  className="selectMenu"
-                  style={{marginRight: "10px"}}
-                />
-                : 
-                <Select defaultValue={1} 
-                  isLoading={true} 
-                  isDisabled={true} 
-                  placeholder={"loading.."}
-                  options={"none"} 
-                  style={{marginRight: "10px"}}
-                />}
-              </Grid>              
-            </Grid>            
-          </Grid>
-          <Grid style={{position: "absolute", right:"12px", top: "62px", zIndex: "999", background: "cyan", maxHeight: "600px" , width:"317px", padding: "10px", overflow: "auto"}}>                
-          <Grid>{selectedWar.label ? <b>{selectedWar.label}</b> : 'title'}</Grid>   
-          <Grid>{battlesState.battles ? 
-            <div>
-              <img src={battlesState.battles[0].war.imageUrl} width="100%"></img> 
-              <p>{battlesState.battles[0].war.date}</p>
-              <p style={{fontSize: ".89rem"}}>{battlesState.battles[0].war.summary}</p>
-              <a href={battlesState.battles[0].war.url}>Link</a>
-            </div>
-            : 'date'}
-          </Grid>            
-          </Grid>
+          
+          <div className="map_ui war_selector">
+            {warsState.wars ? 
+            <Select onChange={(e) => fetchBattles(e)} 
+              placeholder={"select a war"} 
+              options={warsState.wars.map((war, index) =>( {value:war.id, label:war.name} ))} 
+              className="selectMenu"
+              style={{marginRight: "10px"}}
+            />
+            : 
+            <Select defaultValue={1} 
+              isLoading={true} 
+              isDisabled={true} 
+              placeholder={"loading.."}
+              options={"none"} 
+              style={{marginRight: "10px"}}
+            />}
+          </div>              
+          
+                      
+          <div className="map_ui war_card">                               
+            <div>{battlesState.battles ? 
+              <div style={{padding: "10px"}}>
+                <div>{selectedWar.label ? <b>{selectedWar.label}</b> : 'title'}</div>
+                <img src={battlesState.battles[0].war.imageUrl} width="100%"></img> 
+                <p>{battlesState.battles[0].war.date}</p>
+                <p style={{fontSize: ".89rem"}}>{battlesState.battles[0].war.summary}</p>
+                <a href={battlesState.battles[0].war.url}>Link</a>
+              </div>
+              : 'date'}
+            </div>            
+          </div> 
+
           <Grid container style={{display: "flex", justifyContent: "center", position: "absolute", zIndex:"999", alignItems: "center", bottom: "20px"}}>
             <Grid item xs={9}>
               <div style={{display: "flex", justifyContent: "space-evenly"}}>              

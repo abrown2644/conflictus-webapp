@@ -25,6 +25,17 @@ function Map({ theme }) {
         battles: null
     });
     const [sliderValue, setSliderValue] = useState([year - 100, year ]);
+
+    const [showWarCard, setShowWarCard] = useState(false);
+
+    const toggleWarCard = () => {
+      if(showWarCard == false){
+        setShowWarCard(true);
+      }
+      else {
+        setShowWarCard(false);
+      }      
+    };
     
     //fetch wars
     useEffect(() => {
@@ -45,6 +56,12 @@ function Map({ theme }) {
     //initial battles to load
     useEffect(() => {
       fetchBattles(selectedWar)
+    }, [])
+
+    //show warcard onload when desktop
+    useEffect(() => {
+      if(window.innerWidth > 728)
+        setShowWarCard(true);
     }, [])
 
 
@@ -104,18 +121,20 @@ function Map({ theme }) {
               style={{marginRight: "10px"}}
             />}
           </div>              
-          
+          <button className="map_ui war_card_control" onClick={toggleWarCard}>
+              <div className="war_card_control__arrow">{showWarCard ? '^' : 'v'}</div>
+          </button>
                       
-          <div className="map_ui war_card">                               
+          <div className="map_ui war_card" style={showWarCard ? {display:"block"} : {display: "none"}}>                               
             <div>{battlesState.battles ? 
               <div style={{padding: "10px"}}>
-                <div>{selectedWar.label ? <b>{selectedWar.label}</b> : 'title'}</div>
+                <div>{selectedWar.label ? <b>{selectedWar.label}</b> : ''}</div>
                 <img src={battlesState.battles[0].war.imageUrl} width="100%"></img> 
                 <p>{battlesState.battles[0].war.date}</p>
                 <p style={{fontSize: ".89rem"}}>{battlesState.battles[0].war.summary}</p>
                 <a href={battlesState.battles[0].war.url}>Link</a>
               </div>
-              : 'date'}
+              : ''}
             </div>            
           </div> 
 

@@ -1,7 +1,9 @@
 .map_ui {
+    position: absolute;
+    border-radius: 4px;
     width: 350px;
     margin: 10px 10px 0 10px;
-    right: 0;
+    right: 0;    
 }
 
 .war_selector {    
@@ -11,16 +13,38 @@
     margin-top: 10px;
 }
 .war_card {
-    max-height: 550px;
-    position: absolute;
-    border-radius: 4px;
+    max-height: 550px;    
     top: 62px; 
-    z-index: 9999;
     background: cyan;
     overflow: auto;
+    z-index: 9999;
+
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
 }
 .war_card img {
     max-width: 400px;
+}
+
+.war_card_control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 45px;
+    height: 12px;
+    outline: none;
+    border: none;
+    background-color: red;
+    cursor: pointer;
+    z-index: 999;    
+}
+
+.war_card_control__arrow {
+    background-color: blue;
+    width: 30px;
 }
 
 .selectWrapper:first-child {
@@ -73,5 +97,34 @@
     .war_card {
         // right:0;
         // margin: 0;
+        top: 75px;
+    }
+    .war_card_control {
+        top: 56px;
     }
   }
+
+
+//animations
+@keyframes fadein {
+    from { opacity: 0;}
+    to   { opacity: 1;}
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

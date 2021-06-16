@@ -69,7 +69,7 @@ function Map({ theme }) {
       let url = `https://localhost:44346/api/battles/war=${war.value}`;
       fetch(url).then(res => res.json())
       .then(result => {
-        // console.log(result.data);
+        console.log(result.data);
         setBattlesState({battles: result.data});
       })
       // console.log(war);      

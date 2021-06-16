@@ -2,7 +2,7 @@
     position: absolute;
     border-radius: 4px;
     width: 350px;
-    margin: 10px 10px 0 10px;
+    margin: 10px 0;
     right: 0;    
 }
 
@@ -88,8 +88,8 @@
 
 @media only screen and (max-width: 768px) {
     .map_ui {
-        width: 94%;
-        margin: 0 10px;
+        width: 100%;
+        // margin: 0 10px;
     }
     .war_selector {
         margin-top: 10px;

@@ -6,12 +6,20 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import React from 'react';
 
+import './LeafletMap.scss';
+
 function LeafletMap({ theme, battleItems}) {
 
     //set max map bounds
     const corner1 = Leaflet.latLng(-90, -200)
     const corner2 = Leaflet.latLng(90, 200)
     const customBounds = Leaflet.latLngBounds(corner1, corner2)
+
+    //battle winner
+    // const setWinner(side){
+
+    // }
+    
 
     return(
         <MapContainer center={[28.987776073100964, -40.70433830991955]}
@@ -35,9 +43,62 @@ function LeafletMap({ theme, battleItems}) {
             {battleItems && battleItems.map((battle, index) => (                           
                 <Circle key={index} pathOptions={{ color: '#d7263d' }} center={[battle.location.latitude, battle.location.longitude]}>
                     <Popup>
-                        <h4>{battle.title}</h4>
-                        <h5>{battle.date}</h5>
-                        <h5><a href={battle.url} target="_blank">See on Wikidata</a></h5>                    
+                        <div className="battle_pop">
+                            <h4>{battle.title}</h4>
+                            <h5>{battle.date}</h5>
+                            <img src={battle.imageUrl} height="90"></img>                        
+                            <div className="battle_pop_body"> 
+                                <h5 className="header">Belligerents</h5>
+                                <div className="section belligerents">                          
+                                    <div className="section_child belligerents_a a">                                                                
+                                        <ul className="side_ul">{battle.sideA.participants.map((item, i)=>{return <li key={i}><img src={item.flagUrl}></img><span>{item.name}</span></li>})}</ul>
+                                    </div>
+                                    <div className="section_child belligerents_b b">
+                                        <ul className="side_ul">{battle.sideB.participants.map((item, i)=>{return <li key={i}><img src={item.flagUrl}></img><span>{item.name}</span></li>})}</ul>
+                                    </div>
+                                </div> 
+                                <h5 className="header">Commanders</h5>
+                                <div className="section commanders">                          
+                                    <div className="section_child commanders_a a">                                                                
+                                        <ul className="side_ul">{battle.sideA.commanders && battle.sideA.commanders.split(',').map((item, i) =>{return <li key={i}>{item}</li>})}</ul>                                        
+                                    </div>
+                                    <div className="section_child commanders_b b">
+                                        <ul className="side_ul">{battle.sideB.commanders && battle.sideB.commanders.split(',').map((item, i) =>{return <li key={i}>{item}</li>})}</ul>
+                                    </div>
+                                </div>
+                                <h5 className="header">Strength</h5>
+                                <div className="section strength">                          
+                                    <div className="section_child strength_a a">                                                                
+                                        <ul className="side_ul">{battle.sideA.strength && battle.sideA.strength.split(',').map((item, i) =>{return <li key={i}>{item}</li>})}</ul>                                        
+                                    </div>
+                                    <div className="section_child strength_b b">
+                                        <ul className="side_ul">{battle.sideB.strength && battle.sideB.strength.split(',').map((item, i) =>{return <li key={i}>{item}</li>})}</ul>
+                                    </div>
+                                </div>
+                                <h5 className="header">Losses</h5>
+                                <div className="section losses">                          
+                                    <div className="section_child losses_a a">                                                                
+                                        <ul className="side_ul">{battle.sideA.losses && battle.sideA.losses.split(',').map((item, i) =>{return <li key={i}>{item}</li>})}</ul>                                        
+                                    </div>
+                                    <div className="section_child losses_b b">
+                                        <ul className="side_ul">{battle.sideB.losses && battle.sideB.losses.split(',').map((item, i) =>{return <li key={i}>{item}</li>})}</ul>
+                                    </div>
+                                </div>
+                                <h5 className="header">Outcome</h5>
+                                <div className="section">  
+                                    <div className="outcome">                                                                  
+                                        <div className="outcome outcome_a a" style={battle.sideA.victory ? {background:"green"} : {background:"red"}}>
+                                            <h5 className="outcome_text">{battle.sideA.victory ? battle.outcome : ""}</h5>
+                                        </div>
+                                    </div>    
+                                    <div className="outcome">
+                                        <h5>{battle.sideB.victory ? battle.outcome : ""}</h5>
+                                        <div className="outcome outcome_b b" style={battle.sideB.victory ? {background:"green"} : {background:"red"}}></div>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <h5><a href={battle.url} target="_blank">See on Wikidata</a></h5>   
+                        </div>                
                     </Popup>
                 </Circle>
             ))}            

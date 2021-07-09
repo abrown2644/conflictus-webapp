@@ -47,3 +47,26 @@
     top: -14px;
     color: green;
 }
+
+.battle_modal {
+    color: black;
+    background-color: white;
+    margin: 10px;
+    border-radius: 4px;
+    padding: 12px;
+}
+.battle_modal:focus {
+    border: none;
+    outline: none;
+}
+
+.battle_modal h2 {
+    margin: 0;
+}
+.battle_modal img {
+    max-width: 100%;
+}
+
+.leaflet-top, .leaflet-bottom {
+    z-index: 490!important;
+}
